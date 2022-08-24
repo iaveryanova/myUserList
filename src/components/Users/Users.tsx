@@ -1,13 +1,30 @@
-import React, {ChangeEvent, FC, useMemo, useState, FormEvent} from 'react';
-import {USERS} from "./usersData";
-import {IUser} from "./IUser";
-import {initialUser} from './initialUser';
+import React, { ChangeEvent, FC, useMemo, useState, FormEvent, useEffect } from 'react';
+import { IUser } from './IUser';
+import { initialUser } from './initialUser';
+import Loader from '../Loader';
+import https from '../../https';
+
 
 const Users: FC = () => {
     const [user, setUser] = useState(initialUser);
-    const [users, setUsers] = useState<IUser[]>(USERS);
+    const [users, setUsers] = useState<IUser[]>([]);
     const [search, setSearch] = useState('');
     const [showUserForm, setShowUserForm] = useState(false);
+
+    useEffect(() => {
+        getUsers();
+    }, []);
+
+    const getUsers = async () => {
+        console.log('function getUsers work');
+        try {
+            const users = await https.get('users?page=2');
+            setUsers(users.data.data);
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     const deleteUser = (id: number) => {
         const isDelete = window.confirm("Do you really delete this user?");
         if (isDelete) {
@@ -21,17 +38,26 @@ const Users: FC = () => {
         }
         return users;
     }, [search, users]); 
-    console.log(searchedUsers);
+    
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         const field = event.target.id;
         const newValue = event.target.value;
         setUser({...user, [field]: newValue});
     };
-    const addUser = (event: FormEvent) => {
+    const addUser = async (event: FormEvent) => {
         event.preventDefault();
-        setUsers([...users, user]);
-        setUser(initialUser);
+        try {
+            const addedUser = await https.post('users?page=2', user);
+            if (addedUser.data.data) {
+                setUsers([...users, user]);
+                setUser(initialUser);
+            }
+        } catch (e) {
+            console.log(e);
+        }
+        
     };
+
     return (
         <>
             <div className="input-group mb-3">
@@ -44,6 +70,7 @@ const Users: FC = () => {
                        onChange={(event) => setSearch(event.target.value)}
                 />
             </div>
+
             <button className="btn btn-success mt-3 mb-3" 
             onClick={() => setShowUserForm(!showUserForm)}
             >
@@ -93,7 +120,7 @@ const Users: FC = () => {
                             </div>
                         </div>)
                     :
-                    <h2>Users not exist</h2>
+                    <Loader />
                 }
             </div>
         </>
