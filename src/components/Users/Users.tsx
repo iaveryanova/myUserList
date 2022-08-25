@@ -25,12 +25,17 @@ const Users: FC = () => {
         }
     }
 
-    const deleteUser = (id: number) => {
+    const deleteUser = async (id: number) => {
         const isDelete = window.confirm("Do you really delete this user?");
         if (isDelete) {
-            setUsers(users.filter(user => user.id !== id));
+            const deletedUser = await https.delete(`api/users/${id}`);
+            console.log(deletedUser);
+            if (deletedUser.status === 204) {
+                setUsers(users.filter((user) => user.id !== id));
+            }
         }
     };
+
     const searchedUsers = useMemo(() => {
         
         if (search) {
