@@ -18,7 +18,7 @@ const UserAddForm = ({setUsers, users}: {setUsers: Dispatch<SetStateAction<IUser
         event.preventDefault();
         try {
             const addedUser = await https.post('users?page=2', user);
-            if (addedUser.data.data) {
+            if (addedUser.data) {
                 setUsers([...users, user]);
                 setUser(initialUser);
             }

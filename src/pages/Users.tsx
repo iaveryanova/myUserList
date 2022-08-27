@@ -16,7 +16,6 @@ const Users: FC = () => {
     }, []);
 
     const getUsers = async () => {
-        console.log('function getUsers work');
         try {
             const users = await https.get('users?page=2');
             setUsers(users.data.data);
