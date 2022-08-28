@@ -4,6 +4,7 @@ import https from '../https';
 import UserCards from '../components/Users/UserCards';
 import UserAddForm from '../components/Users/UserAddForm';
 import { useSearch } from '../hooks/useSearch';
+import SearchForm from '../components/Users/SearchForm';
 
 
 const Users: FC = () => {
@@ -39,16 +40,7 @@ const Users: FC = () => {
     
     return (
         <>
-            <div className="input-group mb-3">
-                <span className="input-group-text" id="basic-addon1">Search</span>
-                <input type="text"
-                       className="form-control"
-                       placeholder="UserName"
-                       aria-label="Username"
-                       aria-describedby="basic-addon1"
-                       onChange={(event) => setSearch(event.target.value)}
-                />
-            </div>
+            <SearchForm setSearch={setSearch}/>
 
             <button className="btn btn-success mt-3 mb-3" 
             onClick={() => setShowUserForm(!showUserForm)}
