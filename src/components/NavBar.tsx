@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
+import Context from '../context/Context';
 
 const NavBar = () => {
+  const {setOpenModal} = useContext(Context);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <div className="container-fluid">
@@ -18,6 +20,7 @@ const NavBar = () => {
           <Link className="nav-link active" to="posts">Posts</Link>
         </li>
       </ul>
+      <button className="btn btn-primary" onClick={() => setOpenModal(true)}>LogIn</button>
     </div>
   </div>
 </nav>
