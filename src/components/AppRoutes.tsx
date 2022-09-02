@@ -1,15 +1,22 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Users from '../pages/Users'
 import Posts from '../pages/Posts'
 import Main from '../pages/Main'
+import Context from '../context/Context'
 
 const AppRoutes = () => {
+  const {isLoginUser} = useContext(Context);
   return (
+    isLoginUser ?
     <Routes>
         <Route path="users" element={<Users/>}/>
         <Route path="posts" element={<Posts/>}/>
-        <Route path="main" element={<Main/>}/>
+        <Route path="*" element={<Main/>}/>
+    </Routes>
+    :
+    <Routes>
+    <Route path="*" element={<Main/>}/>
     </Routes>
   )
 }

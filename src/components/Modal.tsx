@@ -7,9 +7,9 @@ import Login from './Users/Login';
 const Modal = () => {
     const {openModal, setOpenModal} = useContext(Context);
   return (
-    <div className={`modal fade ${openModal && "show d-block"}`} tabIndex={-1}>
-      <div className='modal-dialog'>
-        <div className='modal-content'>
+    <div className={`modal fade ${openModal && 'show d-block'}`} tabIndex={1} onClick={(event) => setOpenModal(false)}>
+      <div className='modal-dialog' onClick={(event) => event.stopPropagation()}>
+        <div className='modal modal-content'>
           <div className='modal-header'>
             <h5 className='modal-title'>Authorization</h5>
             <button
@@ -24,18 +24,13 @@ const Modal = () => {
             <Login />
           </div>
           <div className='modal-footer'>
-            <button
-              type='button'
-              className='btn btn-secondary'
-              data-bs-dismiss='modal'
-            >
-              Close
-            </button>
-            <button type='button' className='btn btn-primary'>
-              Save changes
-            </button>
+          <button type='button' className='btn btn-secondary' data-bs-dismiss='modal'
+                    onClick={() => setOpenModal(false)}>Close
+          </button>
+          <button type='button' className='btn btn-primary'>Save changes</button>
           </div>
         </div>
+        <div className={`modal-backdrop fade ${openModal && 'show d-block'}`}></div>
       </div>
     </div>
   );
