@@ -20,7 +20,6 @@ function App() {
     <Context.Provider value={{openModal, setOpenModal, isLoginUser, setIsLoginUser}}>
       <div className="App container">
         <NavBar />
-        <h1 className='mt-5'>My User List</h1>
         <AppRoutes />
         <Modal />
       </div>
