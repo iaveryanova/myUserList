@@ -10,7 +10,7 @@ const UserCards = ({users, deleteUser}: {users: IUser[], deleteUser: (id: number
             <div className="col" key={user.id}>
             <div className="card h-100">
                 <div className="card-body">
-                    <h5 className="card-title">{`№${user.id} - ${user.first_name}`}</h5>
+                    <h5 className="card-title">{user.first_name}</h5>
                     <p className="card-text">Last Name: {user.last_name}</p>
                     <p className="card-text">Email: {user.email}</p>
                     <img src={user.avatar}/>
