@@ -1,7 +1,7 @@
 .bg {
     width: auto;
-    height: 500px;
-    background: url(../../public/images/users.jpg) no-repeat center; 
+    height: 700px;
+    background: url(./../../public/images/users.jpg) no-repeat center; 
     background-size: cover;
   } 
 
