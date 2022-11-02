@@ -8,7 +8,8 @@ import { useTypedSelector } from '../hooks/useTypedSelectors';
 const Posts = () => {
   const { posts } = useTypedSelector((state) => state.posts);
   const [search, setSearch] = useState('');
-  const searchedPost = useSearch(posts, search, 'title');
+  const searchedPost = useSearch(posts, 'title', search);
+
   const { getPosts } = useAction();
 
   useEffect(() => {

@@ -1,7 +1,8 @@
 .bg {
     width: auto;
     height: 500px;
-    background: url("https://www.montsepenarroya.com/wp-content/uploads/2019/12/user-research-1030x502.png") no-repeat center; 
+    background: url(../../public/images/users.jpg) no-repeat center; 
+    background-size: cover;
   } 
 
   

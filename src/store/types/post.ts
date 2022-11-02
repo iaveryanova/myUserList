@@ -1,4 +1,4 @@
-import { IPosts } from '../../components/IPosts';
+import { IPosts } from "../../components/IPosts";
 
 export interface PostState {
   posts: IPosts[];

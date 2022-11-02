@@ -2,8 +2,7 @@
   text-align: center;
 }
 
-/* .bg {
-  width: auto;
-  height: 500px;
-  background: url("https://www.montsepenarroya.com/wp-content/uploads/2019/12/user-research-1030x502.png") no-repeat center; 
-}  */
+.navbar {
+  margin-bottom: 20px;
+
+}
