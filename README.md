@@ -1,9 +1,9 @@
 This project was bootstrapped with [Create React App]
 ## Live version: https://iaveryanova.github.io/userListReact/
 
-### You can Use below credentials for Successful Login:
-•	Email : "eve.holt@reqres.in"
-•	Password : "cityslicka"
+### You can use below credentials for successful Login:
+* Email : "eve.holt@reqres.in"
+* Password : "cityslicka"
 
 ## Used technologies
 * HTML5
