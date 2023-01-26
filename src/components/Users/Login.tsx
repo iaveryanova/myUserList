@@ -14,7 +14,7 @@ const Login = () => {
     const data = { email: login, password: password };
     const authorizationData = await https.post(
       `https://reqres.in/api/${isLogin ? 'login' : 'registration'}`, data);
-    // console.log(authorizationData);
+    console.log(authorizationData);
     if (authorizationData.data?.token) {
       localStorage.setItem('token', authorizationData.data.token);
       setIsLoginUser(true);
